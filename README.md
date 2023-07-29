@@ -54,4 +54,35 @@ dli@dli-desktop:~$ nvgstcapture-1.0 --mode=1 --camsrc=0 --cap-dev-node=0 --autom
 dli@dli-desktop:~$ nvgstcapture-1.0 --mode=2 --camsrc=0 --cap-dev-node=0
 # capture current screen cam showes
 
+# Headless Mode: Connect PowerShell with powered SSH
+# Open Windows PowerShell with Adminstrator
+
+PS C:\Windows\system32> cd ..
+
+PS C:\Windows> cd ..
+
+PS C:\> ssh dli@192.168.55.1
+
+# Change diretory and Connect to server
+# Then, "dli@dli-desktop:~$" appears in PowerShell
+
+dli@dli-desktop:~$ ls
+
+dli@dli-desktop:~$ mkdir -p ~/nvdli-data
+
+dli@dli-desktop:~$ ls
+# Add needness dir
+
+dli@dli-desktop:~$ echo "sudo docker run --runtime nvidia -it --rm --network host \ --volume ~/nvdli-data:/nvdli-nano/data \ --volume /tmp/argus_socket:/tmp/argus_socket \ --device /dev/video0 \ nvcr.io/nvidia/dli/dli-nano-ai:v2.0.2-r32.7.1kr" > docker_dli_run.sh
+
+dli@dli-desktop:~$ chmod +x docker_dli_run.sh
+
+dli@dli-desktop:~$ ls
+# chmod helps access of file can be changed
+# chmod [OPTION] [MODE] [FILE]
+
+dli@dli-desktop:~$ ./docker_dli_run.sh
+# Enter sudo pw
+
+root@dli-desktop:/nvdli-nano#
 
